@@ -131,6 +131,7 @@ Set your SQL Server, Redis, JWT, Email, and Stripe credentials.
 
 ## Folder Structure
 
+Talabat/ │ ├── Core/ │   ├── Entities/ │   ├── Interfaces/ │   └── Specifications/ │ ├── Repository/ │   ├── Context/ │   ├── Repositories/ │   └── Specifications/ │ ├── Services/ │   └── Services/ │ ├── Controllers/ │   └── (All API controllers) │ ├── DTO/ │   └── (All Data Transfer Objects) │ ├── Errors/ │   └── (Custom error classes) │ ├── appsettings.json └── Program.cs / Startup.cs
 ---
 
 ## License
