@@ -79,14 +79,14 @@ This project provides endpoints for user authentication, product management, bas
 ### Configuration
 
 1. **Clone the repository:**
-2. 
+   
 2. **Update `appsettings.json`:**  
 Set your SQL Server, Redis, JWT, Email, and Stripe credentials.
 
 3. **Apply Migrations:**
-4. 
+   
 4. **Run the application:**
-5. 
+   
 ---
 
 ## API Endpoints Overview
