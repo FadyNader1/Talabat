@@ -95,8 +95,17 @@ This project provides endpoints for user authentication, product management, bas
 4. **Run the application:**
    dotnet run
 
+## 🧪 Testing the Endpoints
 
----
+### ✅ Postman Collection
+📥 [Download Talabat.postman_collection.json](./Talabat.postman_collection.json)
+
+### ⚙️ How to Use
+
+1. Open **Postman**.
+2. Click on **Import**.
+3. Select the downloaded `.json` file.
+4. Start testing all available API endpoints with ease 🎯
 
 ## API Endpoints Overview
 
