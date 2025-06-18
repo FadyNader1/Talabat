@@ -1,0 +1,664 @@
+{
+	"info": {
+		"_postman_id": "32005b9c-ff64-454a-914a-bfa48d9792b2",
+		"name": "Talabat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41964115"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "GetAllProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Product/GetAllProducts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Product",
+								"GetAllProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProductById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Product/GetProductById?id=5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Product",
+								"GetProductById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FilterAndSearchProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Product/GetAllProducts?Brand_Id=&Type_Id=3&SearchByName=",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Product",
+								"GetAllProducts"
+							],
+							"query": [
+								{
+									"key": "Brand_Id",
+									"value": ""
+								},
+								{
+									"key": "Type_Id",
+									"value": "3"
+								},
+								{
+									"key": "SearchByName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Wireless Headphones\",\r\n  \"description\": \"High-quality noise-cancelling wireless headphones with long battery life.\",\r\n  \"pictureUrl\": \"https://example.com/images/wireless-headphones.jpg\",\r\n  \"price\": 149.99,\r\n  \"productBrand_Id\": 1,\r\n  \"productBrand_Name\": \"TechNova\",\r\n  \"productType_Id\": 2,\r\n  \"productType_Name\": \"Electronics\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7194/api/Product/AddProduct",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Product",
+								"AddProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Product/DeleteProduct?id=18",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Product",
+								"DeleteProduct"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"name\": \"Wireless Headphonesxxxxxxxxxxxxxx\",\r\n  \"description\": \"High-quality noise-cancelling wireless headphones with long battery life.\",\r\n  \"pictureUrl\": \"https://example.com/images/wireless-headphones.jpg\",\r\n  \"price\": 149.99,\r\n  \"productBrand_Id\": 1,\r\n  \"productBrand_Name\": \"TechNova\",\r\n  \"productType_Id\": 2,\r\n  \"productType_Name\": \"Electronics\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7194/api/Product/UpdateProduct?id=16",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Product",
+								"UpdateProduct"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "16"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Productcontroller provides a RESTful API for managing products in the system. It supports operations to retrieve all products with filtering, get a product by ID, add new products, update existing products, and delete products. All endpoints return structured responses and handle errors gracefully. This controller is designed to facilitate product management for e-commerce or inventory applications."
+		},
+		{
+			"name": "Basket",
+			"item": [
+				{
+					"name": "CreateOrUpdateBasket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"basket_3\",\r\n  \"itemBasket\": [\r\n    {\r\n      \"product_Id\": 3,\r\n      \"product_Name\": \"pro3\",\r\n      \"price\": 200,\r\n      \"quantity\": 3\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7194/api/Basket/CreateOrUpdateBasket",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Basket",
+								"CreateOrUpdateBasket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetBasketById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Basket/GetBasketById?id=basket_1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Basket",
+								"GetBasketById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "basket_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteBasketById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Basket/DeleteBasket?id=basket_2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Basket",
+								"DeleteBasket"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "basket_2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllBaskets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Basket/GetAllBaskets",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Basket",
+								"GetAllBaskets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ClearBasket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Basket/ClearBasket",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Basket",
+								"ClearBasket"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Basketcontroller provides RESTful API endpoints for managing customer shopping baskets. It allows clients to create or update a basket, retrieve a basket by its ID, get all baskets, delete a specific basket, or clear all baskets from the system. All endpoints return structured responses and handle errors gracefully, making it easy to integrate basket management into your e-commerce application."
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fname\": \"mena\",\r\n  \"lname\": \"nader\",\r\n  \"email\": \"mena3082003@gmail.com\",\r\n  \"country\": \"Egypt\",\r\n  \"city\": \"Aswan\",\r\n  \"phone\": \"01208784207\",\r\n  \"password\": \"P@ssw0rd\",\r\n  \"confirm_Password\": \"P@ssw0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7194/api/Account/Register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Account",
+								"Register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"mena3082003@gmail.com\",\r\n  \"password\": \"P@ssw0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7194/api/Account/Login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Account",
+								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserProfile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fname\": \"menaa\",\r\n  \"lname\": \"nader\",\r\n  \"email\": \"mena3082003@gmail.com\",\r\n  \"country\": \"Egypt\",\r\n  \"city\": \"Aswan\",\r\n  \"phone\": \"eed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7194/api/Account/UpdateUserProfile",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Account",
+								"UpdateUserProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ForgetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Account/ForgetPassword",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Account",
+								"ForgetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJBMjU2Q0JDLUhTNTEyIiwidHlwIjoiSldUIn0.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJtZW5hX25hZGVyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoibWVuYTMwODIwMDNAZ21haWwuY29tIiwiZXhwIjoxNzUyNjExMzI5LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTk0IiwiYXVkIjoiVGFsYWJhdFVzZXJzIn0.GqvhC0an9derWdJkgNjlAeNvnt4Fj24OlcMwkUz0f1y-BYZpt51r8tWaP-skpzql-Ez92PViNTcTIzGeiLH1nQ\",\r\n  \"email\": \"mena3082003@gmail.com\",\r\n  \"password\": \"P@ssw0rd\",\r\n  \"newPassword\": \"P@ssw0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7194/api/Account/ResetPassword",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Account",
+								"ResetPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CurrentUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Account/CurrentUser",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Account",
+								"CurrentUser"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Accountcontroller provides RESTful API endpoints for user account management and authentication. It supports user registration, login, profile updates, retrieving the current user, and password reset operations. All endpoints are designed to work with JWT authentication and return structured responses, making it easy to integrate secure user management into your application."
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "CreateOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"basketId\": \"basket_5\",\r\n  \"shippingAddress\": {\r\n    \"fName\": \"fady\",\r\n    \"lName\": \"nader\",\r\n    \"country\": \"Egypt\",\r\n    \"city\": \"Asan\",\r\n    \"street\": \"eed\"\r\n  },\r\n  \"deliveryMethodId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7194/api/Order/CreateOrder",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Order",
+								"CreateOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CurrentUserOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Order/CurrentUserOrders",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Order",
+								"CurrentUserOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrderById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Order/GetOrderById?id=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Order",
+								"GetOrderById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Order/GetAllOrders",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Order",
+								"GetAllOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CancelOrderById",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Order/CancelOrderById?id=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Order",
+								"CancelOrderById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Ordercontroller provides RESTful API endpoints for managing customer orders. It allows clients to create new orders, retrieve order details by ID, list all orders for a user, and update or cancel existing orders. All endpoints are designed to return structured responses and handle errors gracefully, making order management seamless and reliable for e-commerce applications."
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "CreateOrUpdatePaymentIntent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7194/api/Payment/CreateOrUpdatePaymentIntent/basket_5",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7194",
+							"path": [
+								"api",
+								"Payment",
+								"CreateOrUpdatePaymentIntent",
+								"basket_5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "The Paymentcontroller provides RESTful API endpoints for handling payment operations within the application. It allows clients to initiate payments, verify payment status, and manage payment-related workflows for orders. All endpoints are designed to ensure secure and reliable payment processing, making integration with e-commerce and order management systems straightforward and efficient."
+		}
+	]
+}
