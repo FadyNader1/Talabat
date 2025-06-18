@@ -98,7 +98,7 @@ This project provides endpoints for user authentication, product management, bas
 ## 🧪 Testing the Endpoints
 
 ### ✅ Postman Collection
-📥 [Download Talabat.postman_collection.json](./Talabat.postman_collection.json)
+📥 [Download Talabat1.postman_collection.json](./Talabat.postman_collection.json)
 
 ### ⚙️ How to Use
 
