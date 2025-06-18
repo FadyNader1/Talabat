@@ -96,7 +96,10 @@ namespace Talabat
             app.UseStatusCodePagesWithRedirects("/errors/{0}");
 
             app.UseHttpsRedirection();
+<<<<<<< HEAD
             app.UseStaticFiles();
+=======
+>>>>>>> 815e5380d27bba12dfa20d9f2545c1cb947326b2
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors();
