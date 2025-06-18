@@ -11,6 +11,10 @@ namespace Talabat.Core.Specifications
     {
         public Expression<Func<T, bool>> WHere { get; set; }
         public List<Expression<Func<T, object>>> INclude { get; set; }
+        public int Skip { get ; set ; }
+        public int Take { get; set; }
+        public bool EnablePaggination { get ; set; }
+
         public BaseSpecification()
         {
             INclude = new List<Expression<Func<T, object>>>();
@@ -19,6 +23,12 @@ namespace Talabat.Core.Specifications
         {
             WHere = wh;
             INclude = new List<Expression<Func<T, object>>>();
+        }
+        public void ApplyPaggination(int Skip,int Take)
+        {
+            EnablePaggination = true;
+            this.Skip = Skip;
+            this.Take = Take;
         }
 
     }

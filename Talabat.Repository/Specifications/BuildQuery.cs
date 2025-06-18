@@ -17,6 +17,9 @@ namespace Talabat.Repository.Specifications
             if (spec.WHere is not null)
                 query = query.Where(spec.WHere);
 
+            if(spec.EnablePaggination)
+                query=query.Skip(spec.Skip).Take(spec.Take);
+
           query=spec.INclude.Aggregate(query, (current, ex) => current.Include(ex));
             return query;
         }
