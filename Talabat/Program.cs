@@ -51,6 +51,14 @@ namespace Talabat
                 });
             //emailsetting
             builder.Services.Configure<EmailSetting>(builder.Configuration.GetSection("Email"));
+            //cors
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", options =>
+                {
+                    options.AllowAnyHeader().AllowAnyOrigin();
+                });
+            });
 
               
             
@@ -83,12 +91,15 @@ namespace Talabat
             {
                 app.ApplySwaggerServices();
             }
-            
-            app.UseHttpsRedirection();
-            app.UseAuthentication();
-            app.UseAuthorization();
+
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseStatusCodePagesWithRedirects("/errors/{0}");
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseCors();
             app.MapControllers();
 
             app.Run();

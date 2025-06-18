@@ -9,6 +9,7 @@ using Talabat.Core.Entities.Basket;
 using Talabat.Core.Entities.Order;
 using Talabat.Core.Interfaces;
 using Talabat.Repository.Context;
+using Talabat.Repository.Specifications;
 
 namespace Talabat.Services.Services
 {
@@ -87,7 +88,21 @@ namespace Talabat.Services.Services
             return basket;
         }
 
+        public async Task<Order> UpdatePaymentIntentToSucceedOrFaild(string IntentId, bool IsSucceed)
+        {
+            var spec = new OrderSpecifications(IntentId);
+            var order=await unitOfWork.Repository<Order>().GetByIdSpecificationAsync(spec);
+            
+            if(IsSucceed)
+                order.status=Status.PaymentReceived;
+            else
+                order.status=Status.PaymentFaild;
+
+             unitOfWork.Repository<Order>().Update(order);
+            await unitOfWork.Complete();
+            return order;
 
 
+        }
     }
 }

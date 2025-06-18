@@ -27,4 +27,8 @@
     <ProjectReference Include="..\Talabat.Services\Talabat.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>

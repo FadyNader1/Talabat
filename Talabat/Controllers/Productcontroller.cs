@@ -35,18 +35,23 @@ namespace Talabat.Controllers
         /// Retrieves all products with optional filtering and searching.
         /// </summary>
         /// <param name="productParams">Filtering and searching parameters (such as brand, type, or name).</param>
-        /// <returns>A list of products as <see cref="ProductDTO"/>.</returns>
+        /// <returns>A list of products as <see cref="pagginationDTO"/>.</returns>
         [HttpGet("GetAllProducts")]
         [ProducesResponseType(typeof(ApiHandleError), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ProductDTO), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IReadOnlyList<ProductDTO>>> GetAllProducts([FromQuery] ProductParams productParams)
+        [ProducesResponseType(typeof(PagginationDTO<Product>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<PagginationDTO<Product>>> GetAllProducts([FromQuery] ProductParams productParams)
         {
+
             var spec = new ProductSpecification(productParams);
-            var product = await unitOfWork.Repository<Product>().GetAllSpecificationAsync(spec);
-            if (product is null)
+            var products = await unitOfWork.Repository<Product>().GetAllSpecificationAsync(spec);
+            if (products is null)
                 return NotFound(new Errors.ApiHandleError(404));
-            var productsmapp = mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(product);
-            return Ok(productsmapp);
+            var productmapp = mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDTO>>(products);
+            var countspec = new ProductCountSpecification(productParams);
+            var count = await unitOfWork.Repository<Product>().CountSpecificationAsync(countspec);
+
+            var paggination = new PagginationDTO<ProductDTO>(productParams.PageIndex, productParams.PageSze, count, productmapp);
+            return Ok(paggination);
         }
         /// <summary>
         /// Retrieves a specific product by its identifier.

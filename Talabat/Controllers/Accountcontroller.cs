@@ -11,10 +11,17 @@ using Talabat.DTO.IdentityDTO;
 using Talabat.Errors;
 using Talabat.Services.Services;
 
+
 namespace Talabat.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    /// <summary>
+    /// Controller for managing user accounts and authentication operations.
+    /// Provides API endpoints for user registration, login, profile management, password reset, and related account actions.
+    /// Supports JWT authentication and integrates with email services for password recovery.
+    /// All endpoints return structured responses and handle errors gracefully.
+    /// </summary>
     public class Accountcontroller : ControllerBase
     {
         private readonly UserManager<UserApp> userManager;
@@ -31,6 +38,12 @@ namespace Talabat.Controllers
             this.tokenService = tokenService;
             this.emailService = emailService;
         }
+
+        /// <summary>
+        /// Registers a new user account.
+        /// </summary>
+        /// <param name="registerDTO">The registration data for the new user.</param>
+        /// <returns>The created user data with JWT token, or an error if registration fails.</returns>
         [HttpPost("Register")]
         [ProducesResponseType(typeof(ApiHandleError),StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(UserDTO),StatusCodes.Status200OK)]
@@ -64,6 +77,11 @@ namespace Talabat.Controllers
             return BadRequest(new ApiHandleError(400, "Faild to create account"));
         }
 
+        /// <summary>
+        /// Authenticates a user and returns a JWT token if successful.
+        /// </summary>
+        /// <param name="loginDto">The login credentials (email and password).</param>
+        /// <returns>User data with JWT token, or an error if authentication fails.</returns>
         [HttpPost("Login")]
         [ProducesResponseType(typeof(ApiHandleError), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(UserDTO), StatusCodes.Status200OK)]
@@ -90,6 +108,10 @@ namespace Talabat.Controllers
             });
         }       
 
+        /// <summary>
+        /// Retrieves the currently authenticated user's information.
+        /// </summary>
+        /// <returns>The current user's data with a fresh JWT token, or an error if not authenticated.</returns>
         [HttpGet("CurrentUser")]
         [ProducesResponseType(typeof(ApiValidationError), StatusCodes.Status400BadRequest)]
         [Authorize]
@@ -116,6 +138,11 @@ namespace Talabat.Controllers
 
         }
 
+        /// <summary>
+        /// Updates the profile information of the currently authenticated user.
+        /// </summary>
+        /// <param name="updateUserDTO">The new profile data for the user.</param>
+        /// <returns>The updated user data, or an error if the update fails.</returns>
         [Authorize]
         [HttpPost("UpdateUserProfile")]
         [ProducesResponseType(typeof(ApiValidationError), StatusCodes.Status400BadRequest)]
@@ -152,6 +179,11 @@ namespace Talabat.Controllers
             return Ok(updateUserDTO);
         }
 
+        /// <summary>
+        /// Sends a password reset link to the user's email address.
+        /// </summary>
+        /// <param name="forgetPassword">The email address for which to send the reset link.</param>
+        /// <returns>A message indicating whether the reset link was sent.</returns>
         [HttpPost("ForgetPassword")]
         [ProducesResponseType(typeof(ApiHandleError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiValidationError), StatusCodes.Status400BadRequest)]
@@ -177,6 +209,11 @@ namespace Talabat.Controllers
             });
         }
 
+        /// <summary>
+        /// Resets the user's password using the provided token and new password.
+        /// </summary>
+        /// <param name="resetPassword">The reset token, email, and new password data.</param>
+        /// <returns>A message indicating whether the password was reset successfully.</returns>
         [HttpPost("ResetPassword")]
         [ProducesResponseType(typeof(ApiHandleError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiValidationError), StatusCodes.Status400BadRequest)]

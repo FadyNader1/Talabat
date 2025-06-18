@@ -60,5 +60,10 @@ namespace Talabat.Repository.Repositories
         {
             context.Set<T>().Update(item);
         }
+
+        public Task<int> CountSpecificationAsync(ISpecification<T> spec)
+        {
+            return ApplyQuery(spec).CountAsync();
+        }
     }
 }
