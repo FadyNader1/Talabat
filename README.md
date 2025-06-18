@@ -41,6 +41,7 @@ This project provides endpoints for user authentication, product management, bas
 - JWT (Authentication)
 - SMTP (Email)
 - Swagger/OpenAPI (API documentation)
+- Postman
 
 ---
 
